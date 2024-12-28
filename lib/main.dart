@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter GetX + Dio',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.initial, // Define the initial route
-      getPages: AppPages.routes, // Define the route mappings
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
     );
   }
 }
