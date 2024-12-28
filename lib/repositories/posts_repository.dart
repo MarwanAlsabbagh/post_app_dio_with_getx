@@ -1,23 +1,25 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../models/post_model.dart';
 import '../services/api_service.dart';
 
 class PostsRepository {
-  final ApiService apiService;
+  final ApiService apiService = Get.find<ApiService>();
 
-  PostsRepository(this.apiService);
-
-  Future<List<dynamic>> getPosts() async {
+Future<List<Post>> getPosts() async {
     final response = await apiService.get('/posts');
-    return response.data;
+    return (response.data as List).map((json) => Post.fromJson(json)).toList();
   }
 
-  Future<dynamic> addPost(Map<String, dynamic> data) async {
-    final response = await apiService.post('/posts', data: data);
-    return response.data;
+  Future<Post> addPost(Post post) async {
+    final response = await apiService.post('/posts', data: post.toJson());
+    return Post.fromJson(response.data);
   }
 
-  Future<dynamic> updatePost(int id, Map<String, dynamic> data) async {
-    final response = await apiService.put('/posts/$id', data: data);
-    return response.data;
+  Future<Post> updatePost(int id, Post post) async {
+    final response = await apiService.put('/posts/$id', data: post.toJson());
+    return Post.fromJson(response.data);
   }
 
   Future<void> deletePost(int id) async {

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
+import '../models/post_model.dart';
 import '../repositories/posts_repository.dart';
 
 class PostsController extends GetxController {
-  final PostsRepository postsRepository;
+  PostsRepository postsRepository=  Get.find<PostsRepository>();
 
-  PostsController(this.postsRepository);
 
   final posts = <dynamic>[].obs;
   final isLoading = false.obs;
@@ -28,35 +28,33 @@ class PostsController extends GetxController {
     }
   }
 
-  Future<void> addPost(Map<String, dynamic> newPost) async {
+  Future<void> addPost(Post newPost) async {
     try {
       isLoading.value = true;
       final addedPost = await postsRepository.addPost(newPost);
       posts.add(addedPost);
     } catch (e) {
       Get.snackbar('Error', e.toString());
-    }
-    finally {
+    } finally {
       isLoading.value = false;
     }
   }
 
-  Future<void> updatePost(int id, Map<String, dynamic> updatedPost) async {
+
+  Future<void> updatePost(int id, Post updatedPost) async {
     try {
       isLoading.value = true;
       final updated = await postsRepository.updatePost(id, updatedPost);
-      final index = posts.indexWhere((post) => post['id'] == id);
+      final index = posts.indexWhere((post) => post.id == id);
       if (index != -1) {
         posts[index] = updated;
       }
     } catch (e) {
       Get.snackbar('Error', e.toString());
-    }
-    finally {
+    } finally {
       isLoading.value = false;
     }
   }
-
   Future<void> deletePost(int id) async {
     try {
       isLoading.value = true;

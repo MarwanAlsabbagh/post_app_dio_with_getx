@@ -9,7 +9,8 @@ import '../services/api_service.dart';
 class PhotosBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => PhotosRepository(Get.find<ApiService>()),fenix: true);
-    Get.lazyPut(() => PhotosController(Get.find<PhotosRepository>()),fenix: true);
+    Get.put(PhotosRepository());
+    Get.put(PhotosController());
+
   }
 }

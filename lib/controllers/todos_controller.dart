@@ -1,14 +1,11 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-
+import '../models/todos_model.dart';
 import '../repositories/todos_repository.dart';
 
 class TodosController extends GetxController {
-  final TodosRepository todosRepository;
 
-  TodosController(this.todosRepository);
-
-  final todos = <dynamic>[].obs;
+  TodosRepository todosRepository= Get.find<TodosRepository>();
+  final todos = <Todo>[].obs;
 
   @override
   void onInit() {

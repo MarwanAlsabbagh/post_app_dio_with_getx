@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/users_controller.dart';
+import '../models/users_model.dart';
 
 class UsersView extends StatelessWidget {
   final UsersController controller = Get.find();
@@ -35,7 +36,7 @@ class UsersView extends StatelessWidget {
                 leading: CircleAvatar(
                   backgroundColor: Colors.blue.shade100,
                   child: Text(
-                    user['name'][0],
+                    user.name[0],
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.blueAccent,
@@ -43,7 +44,7 @@ class UsersView extends StatelessWidget {
                   ),
                 ),
                 title: Text(
-                  user['name'],
+                  user.name,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -51,12 +52,12 @@ class UsersView extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  user['email'],
+                  user.email,
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
                 trailing: Icon(Icons.arrow_forward_ios, color: Colors.blueAccent),
                 onTap: () {
-                  _showUserDetailsDialog(user);
+                  showUserDetailsDialog(user);
                 },
               ),
             );
@@ -66,12 +67,12 @@ class UsersView extends StatelessWidget {
     );
   }
 
-  void _showUserDetailsDialog(Map<String, dynamic> user) {
+  void showUserDetailsDialog(User user) {
     Get.dialog(
       AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: Text(
-          user['name'],
+          user.name,
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -82,23 +83,23 @@ class UsersView extends StatelessWidget {
               radius: 40,
               backgroundColor: Colors.blue.shade100,
               child: Text(
-                user['name'][0],
+                user.name[0],
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blueAccent),
               ),
             ),
             SizedBox(height: 16),
             Text(
-              'Email: ${user['email']}',
+              'Email: ${user.email}',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 8),
             Text(
-              'Phone: ${user['phone'] ?? "N/A"}',
+              'Phone: ${user.phone ?? "N/A"}',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 8),
             Text(
-              'Website: ${user['website'] ?? "N/A"}',
+              'Website: ${user.website ?? "N/A"}',
               style: TextStyle(fontSize: 16),
             ),
           ],

@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/posts_controller.dart';
+import '../../models/post_model.dart';
 
 class EditPostDialog extends StatelessWidget {
-  final Map<String, dynamic> post;
+  final Post post;
   final titleController = TextEditingController();
   final bodyController = TextEditingController();
   final PostsController controller = Get.find();
 
   EditPostDialog({required this.post}) {
-    titleController.text = post['title'];
-    bodyController.text = post['body'];
+    titleController.text = post.title;
+    bodyController.text = post.body;
   }
 
   @override
@@ -38,10 +39,13 @@ class EditPostDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            controller.updatePost(post['id'], {
-              'title': titleController.text,
-              'body': bodyController.text,
-            });
+            final updatedPost = Post(
+              id: post.id,
+              title: titleController.text,
+              body: bodyController.text,
+              userId: post.userId,
+            );
+            controller.updatePost(post.id, updatedPost);
             Get.back();
           },
           child: Text('Save'),

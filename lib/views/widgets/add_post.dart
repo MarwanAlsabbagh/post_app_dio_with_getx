@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/posts_controller.dart';
+import '../../models/post_model.dart';
 
 class AddPostDialog extends StatelessWidget {
   final titleController = TextEditingController();
@@ -32,10 +33,13 @@ class AddPostDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            controller.addPost({
-              'title': titleController.text,
-              'body': bodyController.text,
-            });
+            final newPost = Post(
+              id: 0,
+              title: titleController.text,
+              body: bodyController.text,
+              userId: 1,
+            );
+            controller.addPost(newPost);
             Get.back();
           },
           child: Text('Add'),

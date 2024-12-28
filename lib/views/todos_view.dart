@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../controllers/todos_controller.dart';
 
@@ -20,9 +19,9 @@ class TodosView extends StatelessWidget {
           itemBuilder: (context, index) {
             final todo = controller.todos[index];
             return ListTile(
-              title: Text(todo['title']),
+              title: Text(todo.title),
               leading: Checkbox(
-                value: todo['completed'],
+                value: todo.completed,
                 onChanged: (bool? value) {
                 },
               ),

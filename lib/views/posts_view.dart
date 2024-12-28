@@ -43,7 +43,7 @@ class PostsView extends StatelessWidget {
             return PostItem(
               post: post,
               onEdit: () => Get.dialog(EditPostDialog(post: post)),
-              onDelete: () => controller.deletePost(post['id']),
+              onDelete: () => controller.deletePost(post.id),
             );
           },
         );

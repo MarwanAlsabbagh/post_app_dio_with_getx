@@ -1,14 +1,11 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-
 import '../repositories/photos_repository.dart';
+import '../models/photo_model.dart';
 
 class PhotosController extends GetxController {
-  final PhotosRepository photosRepository;
 
-  PhotosController(this.photosRepository);
-
-  final photos = <dynamic>[].obs;
+  PhotosRepository photosRepository=  Get.find<PhotosRepository>();
+  final photos = <Photo>[].obs;
 
   @override
   void onInit() {

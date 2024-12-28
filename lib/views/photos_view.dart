@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/photos_controller.dart';
+import '../models/photo_model.dart';
 
 class PhotosView extends StatelessWidget {
   final PhotosController controller = Get.find();
@@ -37,10 +38,10 @@ class PhotosView extends StatelessWidget {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.network(photo['url']),
+                        Image.network(photo.url),
                         SizedBox(height: 10),
                         Text(
-                          photo['title'],
+                          photo.title,
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
@@ -67,7 +68,7 @@ class PhotosView extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
                         child: Image.network(
-                          photo['thumbnailUrl'],
+                          photo.thumbnailUrl,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -75,7 +76,7 @@ class PhotosView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        photo['title'],
+                        photo.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,

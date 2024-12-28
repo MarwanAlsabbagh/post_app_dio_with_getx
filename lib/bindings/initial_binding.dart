@@ -7,6 +7,6 @@ import '../services/api_service.dart';
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ApiService(),fenix: true);
+    Get.put(ApiService());
   }
 }

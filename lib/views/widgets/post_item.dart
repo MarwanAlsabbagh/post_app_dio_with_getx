@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../models/post_model.dart';
 
 class PostItem extends StatelessWidget {
-  final Map<String, dynamic> post;
+  final Post post;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
 
@@ -21,7 +22,7 @@ class PostItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post['title'],
+              post.title,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -30,7 +31,7 @@ class PostItem extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              post['body'],
+              post.body,
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 15),

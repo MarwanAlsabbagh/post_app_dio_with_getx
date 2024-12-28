@@ -1,12 +1,15 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../models/todos_model.dart';
 import '../services/api_service.dart';
 
 class TodosRepository {
-  final ApiService apiService;
+  final ApiService apiService = Get.find<ApiService>();
 
-  TodosRepository(this.apiService);
 
-  Future<List<dynamic>> getTodos() async {
+  Future<List<Todo>> getTodos() async {
     final response = await apiService.get('/todos');
-    return response.data;
+    return (response.data as List).map((json) => Todo.fromJson(json)).toList();
   }
 }
