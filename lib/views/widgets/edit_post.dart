@@ -18,17 +18,26 @@ class EditPostDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Edit Post'),
+      title: Text('Edit Post', style: TextStyle(fontWeight: FontWeight.bold)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: titleController,
-            decoration: InputDecoration(labelText: 'Title'),
+            decoration: InputDecoration(
+              labelText: 'Title',
+              border: OutlineInputBorder(),
+            ),
           ),
+          SizedBox(height: 12),
           TextField(
             controller: bodyController,
-            decoration: InputDecoration(labelText: 'Body'),
+            decoration: InputDecoration(
+              labelText: 'Body',
+              border: OutlineInputBorder(),
+            ),
+            maxLines: 3,
           ),
         ],
       ),
@@ -37,7 +46,7 @@ class EditPostDialog extends StatelessWidget {
           onPressed: () => Get.back(),
           child: Text('Cancel'),
         ),
-        TextButton(
+        ElevatedButton(
           onPressed: () {
             final updatedPost = Post(
               id: post.id,
@@ -49,6 +58,7 @@ class EditPostDialog extends StatelessWidget {
             Get.back();
           },
           child: Text('Save'),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurpleAccent),
         ),
       ],
     );

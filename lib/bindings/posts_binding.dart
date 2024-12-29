@@ -9,8 +9,7 @@ import '../services/api_service.dart';
 class PostsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(PostsRepository());
-    Get.put(PostsController());
+    Get.lazyPut(() => PostsController());
 
   }
 }

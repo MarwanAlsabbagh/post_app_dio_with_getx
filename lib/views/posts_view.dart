@@ -12,8 +12,9 @@ class PostsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Posts'),
+        title: Text('Posts', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
+        backgroundColor: Colors.deepPurpleAccent,
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -31,7 +32,7 @@ class PostsView extends StatelessWidget {
           return Center(
             child: Text(
               'No posts available',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey.shade700),
             ),
           );
         }

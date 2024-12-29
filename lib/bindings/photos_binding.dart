@@ -9,8 +9,6 @@ import '../services/api_service.dart';
 class PhotosBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(PhotosRepository());
-    Get.put(PhotosController());
-
+    Get.lazyPut(() => PhotosController());
   }
 }

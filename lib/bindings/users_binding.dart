@@ -9,7 +9,7 @@ import '../services/api_service.dart';
 class UsersBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(UsersRepository());
-    Get.put(UsersController());
+    Get.lazyPut(() => UsersController());
+
   }
 }

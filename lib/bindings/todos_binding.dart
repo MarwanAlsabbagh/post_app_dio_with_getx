@@ -9,7 +9,7 @@ import '../services/api_service.dart';
 class TodosBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(TodosRepository());
-    Get.put(TodosController());
+    Get.lazyPut(() => TodosController());
+
   }
 }

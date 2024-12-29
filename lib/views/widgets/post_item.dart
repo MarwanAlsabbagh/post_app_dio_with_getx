@@ -12,9 +12,9 @@ class PostItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(10),
-      elevation: 4,
+      elevation: 6,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
         padding: EdgeInsets.all(15),
@@ -26,13 +26,13 @@ class PostItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blueAccent,
+                color: Colors.deepPurpleAccent,
               ),
             ),
             SizedBox(height: 8),
             Text(
               post.body,
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
             ),
             SizedBox(height: 15),
             Divider(color: Colors.grey.shade300),
