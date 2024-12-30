@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../models/users_model.dart';
 import '../services/api_service.dart';
 
-class UsersRepository {
+class UsersRepository extends GetxService {
 
   final ApiService apiService = Get.find<ApiService>();
 

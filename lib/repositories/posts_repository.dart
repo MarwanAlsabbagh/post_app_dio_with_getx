@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../models/post_model.dart';
 import '../services/api_service.dart';
 
-class PostsRepository {
+class PostsRepository extends GetxService{
   final ApiService apiService = Get.find<ApiService>();
 
 Future<List<Post>> getPosts() async {

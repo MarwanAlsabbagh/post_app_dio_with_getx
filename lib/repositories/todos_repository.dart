@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../models/todos_model.dart';
 import '../services/api_service.dart';
 
-class TodosRepository {
+class TodosRepository extends GetxService{
   final ApiService apiService = Get.find<ApiService>();
 
 
